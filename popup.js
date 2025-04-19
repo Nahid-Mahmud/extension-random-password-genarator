@@ -2,6 +2,9 @@ document.getElementById("generateButton").addEventListener("click", () => {
   // passwordLength
   const passwordLength = document.getElementById("passwordLength").value;
 
+  // get copiedText
+  const copiedText = document.getElementById("copiedText").value;
+
   const password = generateRandomPassword(passwordLength || 12);
   document.getElementById("passwordField").value = password;
 
@@ -10,6 +13,8 @@ document.getElementById("generateButton").addEventListener("click", () => {
     .writeText(password)
     .then(() => {
       // alert("Password copied to clipboard!");
+      // remove display: none;
+      document.getElementById("copiedText").style.display = "block";
     })
     .catch((err) => {
       console.error("Failed to copy password:", err);

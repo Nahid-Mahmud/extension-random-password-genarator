@@ -42,3 +42,10 @@ button:hover {
   background-color: #0056b3;
   transition: all 0.4s ease;
 }
+
+#copiedText {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #28a745;
+  display: none;
+}

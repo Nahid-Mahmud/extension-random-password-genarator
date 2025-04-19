@@ -12,7 +12,11 @@
       <input type="number" id="passwordLength" value="12" min="1" max="128" placeholder="Password Length" />
       <input type="text" id="passwordField" readonly placeholder="Click 'Generate' to create a password" />
 
-      <button id="generateButton">Generate Password</button>
+      <div>
+        <button id="generateButton">Generate Password</button>
+        <!-- password automatically copied text-->
+        <p id="copiedText" class="hidden">Password copied to clipboard!</p>
+      </div>
     </div>
     <script src="popup.js"></script>
   </body>
