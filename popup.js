@@ -32,7 +32,7 @@ function generateRandomPassword(length) {
   const numbers = "0123456789";
   const specialChars = "!@#$%^&*()_+[]{}|;:,.<>?";
   const allChars = lowercase + uppercase + numbers + specialChars;
-  // console.log("All Characters:", allChars);
+  const alphaNumeric = lowercase + uppercase + numbers; // Only alphabets and numbers
 
   let password = "";
 
@@ -46,22 +46,22 @@ function generateRandomPassword(length) {
   const randomValues = new Uint32Array(length - 4);
   window.crypto.getRandomValues(randomValues);
 
-  // console.log("Random Values:", randomValues);
-
   for (let i = 0; i < randomValues.length; i++) {
     const randomIndex = randomValues[i] % allChars.length;
-    console.log("Random Index:", randomIndex);
     password += allChars[randomIndex];
   }
 
   // Shuffle the password to randomize the order of characters
-  console.log("Password before shuffle:", password);
   password = password
     .split("")
     .sort(() => Math.random() - 0.5)
     .join("");
 
-  // console.log("Password after shuffle:", password);
+  // Ensure the 0th and last indices are alphanumeric
+  password =
+    alphaNumeric[Math.floor(Math.random() * alphaNumeric.length)] +
+    password.slice(1, -1) +
+    alphaNumeric[Math.floor(Math.random() * alphaNumeric.length)];
 
   return password;
 }
